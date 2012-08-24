@@ -1,0 +1,469 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B668605915E75B7300F2C82B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B668605815E75B7300F2C82B /* Cocoa.framework */; };
+		B668606315E75B7300F2C82B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B668606115E75B7300F2C82B /* InfoPlist.strings */; };
+		B668606515E75B7300F2C82B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B668606415E75B7300F2C82B /* main.m */; };
+		B668606915E75B7300F2C82B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B668606715E75B7300F2C82B /* Credits.rtf */; };
+		B668606C15E75B7300F2C82B /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = B668606B15E75B7300F2C82B /* Document.m */; };
+		B668606F15E75B7300F2C82B /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = B668606D15E75B7300F2C82B /* Document.xib */; };
+		B668607215E75B7300F2C82B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B668607015E75B7300F2C82B /* MainMenu.xib */; };
+		B668607A15E75B7300F2C82B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B668607915E75B7300F2C82B /* SenTestingKit.framework */; };
+		B668607B15E75B7300F2C82B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B668605815E75B7300F2C82B /* Cocoa.framework */; };
+		B668608315E75B7300F2C82B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B668608115E75B7300F2C82B /* InfoPlist.strings */; };
+		B668608615E75B7300F2C82B /* droidmacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B668608515E75B7300F2C82B /* droidmacTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B668607C15E75B7300F2C82B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B668604B15E75B7300F2C82B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B668605315E75B7300F2C82B;
+			remoteInfo = droidmac;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B668605415E75B7300F2C82B /* droidmac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = droidmac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B668605815E75B7300F2C82B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		B668605B15E75B7300F2C82B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		B668605C15E75B7300F2C82B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B668605D15E75B7300F2C82B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B668606015E75B7300F2C82B /* droidmac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "droidmac-Info.plist"; sourceTree = "<group>"; };
+		B668606215E75B7300F2C82B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B668606415E75B7300F2C82B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B668606615E75B7300F2C82B /* droidmac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "droidmac-Prefix.pch"; sourceTree = "<group>"; };
+		B668606815E75B7300F2C82B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		B668606A15E75B7300F2C82B /* Document.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
+		B668606B15E75B7300F2C82B /* Document.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
+		B668606E15E75B7300F2C82B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Document.xib; sourceTree = "<group>"; };
+		B668607115E75B7300F2C82B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		B668607815E75B7300F2C82B /* droidmacTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = droidmacTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B668607915E75B7300F2C82B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		B668608015E75B7300F2C82B /* droidmacTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "droidmacTests-Info.plist"; sourceTree = "<group>"; };
+		B668608215E75B7300F2C82B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B668608415E75B7300F2C82B /* droidmacTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = droidmacTests.h; sourceTree = "<group>"; };
+		B668608515E75B7300F2C82B /* droidmacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = droidmacTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B668605115E75B7300F2C82B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B668605915E75B7300F2C82B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B668607415E75B7300F2C82B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B668607A15E75B7300F2C82B /* SenTestingKit.framework in Frameworks */,
+				B668607B15E75B7300F2C82B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B668604915E75B7300F2C82B = {
+			isa = PBXGroup;
+			children = (
+				B668605E15E75B7300F2C82B /* droidmac */,
+				B668607E15E75B7300F2C82B /* droidmacTests */,
+				B668605715E75B7300F2C82B /* Frameworks */,
+				B668605515E75B7300F2C82B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B668605515E75B7300F2C82B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B668605415E75B7300F2C82B /* droidmac.app */,
+				B668607815E75B7300F2C82B /* droidmacTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B668605715E75B7300F2C82B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B668605815E75B7300F2C82B /* Cocoa.framework */,
+				B668607915E75B7300F2C82B /* SenTestingKit.framework */,
+				B668605A15E75B7300F2C82B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B668605A15E75B7300F2C82B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B668605B15E75B7300F2C82B /* AppKit.framework */,
+				B668605C15E75B7300F2C82B /* CoreData.framework */,
+				B668605D15E75B7300F2C82B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		B668605E15E75B7300F2C82B /* droidmac */ = {
+			isa = PBXGroup;
+			children = (
+				B668606A15E75B7300F2C82B /* Document.h */,
+				B668606B15E75B7300F2C82B /* Document.m */,
+				B668606D15E75B7300F2C82B /* Document.xib */,
+				B668607015E75B7300F2C82B /* MainMenu.xib */,
+				B668605F15E75B7300F2C82B /* Supporting Files */,
+			);
+			path = droidmac;
+			sourceTree = "<group>";
+		};
+		B668605F15E75B7300F2C82B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B668606015E75B7300F2C82B /* droidmac-Info.plist */,
+				B668606115E75B7300F2C82B /* InfoPlist.strings */,
+				B668606415E75B7300F2C82B /* main.m */,
+				B668606615E75B7300F2C82B /* droidmac-Prefix.pch */,
+				B668606715E75B7300F2C82B /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B668607E15E75B7300F2C82B /* droidmacTests */ = {
+			isa = PBXGroup;
+			children = (
+				B668608415E75B7300F2C82B /* droidmacTests.h */,
+				B668608515E75B7300F2C82B /* droidmacTests.m */,
+				B668607F15E75B7300F2C82B /* Supporting Files */,
+			);
+			path = droidmacTests;
+			sourceTree = "<group>";
+		};
+		B668607F15E75B7300F2C82B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B668608015E75B7300F2C82B /* droidmacTests-Info.plist */,
+				B668608115E75B7300F2C82B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B668605315E75B7300F2C82B /* droidmac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B668608915E75B7300F2C82B /* Build configuration list for PBXNativeTarget "droidmac" */;
+			buildPhases = (
+				B668605015E75B7300F2C82B /* Sources */,
+				B668605115E75B7300F2C82B /* Frameworks */,
+				B668605215E75B7300F2C82B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = droidmac;
+			productName = droidmac;
+			productReference = B668605415E75B7300F2C82B /* droidmac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B668607715E75B7300F2C82B /* droidmacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B668608C15E75B7300F2C82B /* Build configuration list for PBXNativeTarget "droidmacTests" */;
+			buildPhases = (
+				B668607315E75B7300F2C82B /* Sources */,
+				B668607415E75B7300F2C82B /* Frameworks */,
+				B668607515E75B7300F2C82B /* Resources */,
+				B668607615E75B7300F2C82B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B668607D15E75B7300F2C82B /* PBXTargetDependency */,
+			);
+			name = droidmacTests;
+			productName = droidmacTests;
+			productReference = B668607815E75B7300F2C82B /* droidmacTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B668604B15E75B7300F2C82B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = qhm123;
+			};
+			buildConfigurationList = B668604E15E75B7300F2C82B /* Build configuration list for PBXProject "droidmac" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B668604915E75B7300F2C82B;
+			productRefGroup = B668605515E75B7300F2C82B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B668605315E75B7300F2C82B /* droidmac */,
+				B668607715E75B7300F2C82B /* droidmacTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B668605215E75B7300F2C82B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B668606315E75B7300F2C82B /* InfoPlist.strings in Resources */,
+				B668606915E75B7300F2C82B /* Credits.rtf in Resources */,
+				B668606F15E75B7300F2C82B /* Document.xib in Resources */,
+				B668607215E75B7300F2C82B /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B668607515E75B7300F2C82B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B668608315E75B7300F2C82B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B668607615E75B7300F2C82B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B668605015E75B7300F2C82B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B668606515E75B7300F2C82B /* main.m in Sources */,
+				B668606C15E75B7300F2C82B /* Document.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B668607315E75B7300F2C82B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B668608615E75B7300F2C82B /* droidmacTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B668607D15E75B7300F2C82B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B668605315E75B7300F2C82B /* droidmac */;
+			targetProxy = B668607C15E75B7300F2C82B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B668606115E75B7300F2C82B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B668606215E75B7300F2C82B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B668606715E75B7300F2C82B /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B668606815E75B7300F2C82B /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		B668606D15E75B7300F2C82B /* Document.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B668606E15E75B7300F2C82B /* en */,
+			);
+			name = Document.xib;
+			sourceTree = "<group>";
+		};
+		B668607015E75B7300F2C82B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B668607115E75B7300F2C82B /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		B668608115E75B7300F2C82B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B668608215E75B7300F2C82B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B668608715E75B7300F2C82B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B668608815E75B7300F2C82B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B668608A15E75B7300F2C82B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "droidmac/droidmac-Prefix.pch";
+				INFOPLIST_FILE = "droidmac/droidmac-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B668608B15E75B7300F2C82B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "droidmac/droidmac-Prefix.pch";
+				INFOPLIST_FILE = "droidmac/droidmac-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B668608D15E75B7300F2C82B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/droidmac.app/Contents/MacOS/droidmac";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "droidmac/droidmac-Prefix.pch";
+				INFOPLIST_FILE = "droidmacTests/droidmacTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		B668608E15E75B7300F2C82B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/droidmac.app/Contents/MacOS/droidmac";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "droidmac/droidmac-Prefix.pch";
+				INFOPLIST_FILE = "droidmacTests/droidmacTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B668604E15E75B7300F2C82B /* Build configuration list for PBXProject "droidmac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B668608715E75B7300F2C82B /* Debug */,
+				B668608815E75B7300F2C82B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B668608915E75B7300F2C82B /* Build configuration list for PBXNativeTarget "droidmac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B668608A15E75B7300F2C82B /* Debug */,
+				B668608B15E75B7300F2C82B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B668608C15E75B7300F2C82B /* Build configuration list for PBXNativeTarget "droidmacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B668608D15E75B7300F2C82B /* Debug */,
+				B668608E15E75B7300F2C82B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B668604B15E75B7300F2C82B /* Project object */;
+}
