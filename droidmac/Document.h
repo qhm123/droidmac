@@ -18,12 +18,13 @@
 @property (weak) IBOutlet NSProgressIndicator *progress;
 @property (weak) IBOutlet NSTextField *text;
 @property (weak) IBOutlet NSImageView *icon;
-- (IBAction)cancel:(id)sender;
 @property (weak) IBOutlet NSTextField *appName;
 @property (weak) IBOutlet NSTextField *appVersion;
 @property (weak) IBOutlet NSButton *cancelBtn;
+- (IBAction)cancel:(id)sender;
 
 @property (strong) AppInfo *curAppInfo;
+@property (strong) NSTask *instTask;
 
 @end
 

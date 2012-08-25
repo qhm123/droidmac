@@ -23,6 +23,7 @@
 @synthesize icon;
 
 @synthesize curAppInfo;
+@synthesize instTask;
 
 - (id)init
 {
@@ -55,22 +56,11 @@
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
 {
-    // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
-    // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    @throw exception;
     return nil;
 }
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
 {
-    // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
-    // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
-    // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-    //    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    //    @throw exception;
-    
-    //self.fileURL;
     return YES;
 }
 
@@ -101,8 +91,6 @@
     string = [[NSString alloc] initWithData: data
                                    encoding: NSUTF8StringEncoding];
     
-    //NSLog(@"aapt: %@", string);
-    
     NSRegularExpression *appLabelRegx = [NSRegularExpression regularExpressionWithPattern:@"package: name='(.*?)'.*versionName='(.*?)'.*application-label:'(.*?)'.*application-icon.*:'(.*?)'.*launchable-activity: name='(.*?)'" options:NSRegularExpressionDotMatchesLineSeparators error:nil];
     NSTextCheckingResult *match = [appLabelRegx firstMatchInString:string options:0 range:NSMakeRange(0, [string length])];
     if(match != nil) {
@@ -121,6 +109,8 @@
         AppInfo *appInfo = [AppInfo alloc];
         appInfo.launch = launch;
         appInfo.package = package;
+        
+        [self setCurAppInfo:appInfo];
         
         return appInfo;
     }
@@ -161,54 +151,43 @@
 
 - (void) startTask:(NSString *)apppath {
     
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSString *path = [mainBundle pathForResource:@"adb" ofType:nil];
     
+    AppInfo *appInfo = [self getApkInfo:apppath];
     
-    NSBundle *mainBundle=[NSBundle mainBundle];
-    NSString *path=[mainBundle pathForResource:@"adb" ofType:nil];
-    
-    AppInfo * appInfo = [self getApkInfo:apppath];
-    
-    
-    NSTask *task;
-    task = [[NSTask alloc] init];
+    NSTask *task = [[NSTask alloc] init];
     [task setLaunchPath:path];
     NSArray *arguments = [NSArray arrayWithObjects: @"install", apppath, nil];
     [task setArguments: arguments];
     
-    
     NSPipe *pipe = [NSPipe pipe];
     [task setStandardOutput: pipe];
+    //[task setStandardError: pipe];
     NSFileHandle *file = [pipe fileHandleForReading];
     
-    /*
-    NSPipe *errPipe = [NSPipe pipe];
-    [task setStandardError:errPipe];
-    NSFileHandle *errFile = [errPipe fileHandleForReading];
-     */
-        
-    [task launch];
-    
-    /*
-    NSData *errData = [errFile availableData];
-    NSString *errString = [[NSString alloc] initWithData: errData
-                                             encoding: NSUTF8StringEncoding];
-    NSLog (@"got err\n%@", errString);
+    instTask = task;
 
-     */
+    [task launch];
     
     NSData *data = [file readDataToEndOfFile];
     NSString *string = [[NSString alloc] initWithData: data
                                    encoding: NSUTF8StringEncoding];
     NSLog (@"got\n%@", string);
     
-    /*
-    if([string rangeOfString:@"error: device not found"].location != NSNotFound) {
+    if([string rangeOfString:@"Failure"].location != NSNotFound) {
+        if([string rangeOfString:@"INSTALL_FAILED_ALREADY_EXISTS"].location != NSNotFound) {
+            [self taskDidTerminate:appInfo success:@"INSTALL_FAILED_ALREADY_EXISTS"];
+
+            [text setStringValue:@"安装失败，应用已经存在"];
+        }
+    } else if([string rangeOfString:@"error: device not found"].location != NSNotFound) {
         NSLog(@"手机未连接");
-        [text setStringValue:@"手机未连接"];
+        [text setStringValue:@"手机未连接，请插上手机后再重试"];
+        [self taskDidTerminate:appInfo success:@"device not found"];
     } else {
-        NSLog(@"手机已链接");
+        [self taskDidTerminate:appInfo success:nil];
     }
-     */
     
     /*
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -216,10 +195,8 @@
                                                  name:NSTaskDidTerminateNotification
                                                object:nil];
      */
-    [self taskDidTerminate:appInfo];
     
-    NSLog(@"ns end");
-    
+    NSLog(@"startTask end");
 }
 
 
@@ -231,11 +208,30 @@
     return YES;
 }
 
-- (void) taskDidTerminate:(AppInfo *)appInfo {
+- (void) taskDidTerminate:(AppInfo *)appInfo success:(NSString *)success {
     NSLog(@"end");
     
-    [self performSelectorInBackground:@selector(updateUI:) withObject:appInfo];
+    if(success == nil) {
+        [self performSelectorInBackground:@selector(updateUI:) withObject:appInfo];
+    } else {
+        NSArray *array = [NSArray arrayWithObjects:appInfo, success, nil];
+        [self performSelectorInBackground:@selector(updateUIFailed:) withObject:array];
+    }
+}
+
+- (void) updateUIFailed:(NSArray *)array {
+    NSString *success = [array objectAtIndex:1];
     
+    [progress stopAnimation:self];
+    [progress setHidden:YES];
+    
+    //NSString *show =[[NSString alloc] initWithFormat:@"安装失败, %@", success];
+    if([success isEqualToString:@"INSTALL_FAILED_ALREADY_EXISTS"]) {
+        [cancelBtn setTitle:@"卸载后重装"];
+    } else if([success isEqualToString:@"device not found"]) {
+        [cancelBtn setTitle:@"再次安装"];
+    }
+    //[text setStringValue:show];
     
 }
 
@@ -243,33 +239,9 @@
     [progress stopAnimation:self];
     [progress setHidden:YES];
     
-    NSLog(@"launch: %@", appInfo.launch);
-    
     [text setStringValue:@"安装完成"];
     [cancelBtn setTitle:@"打开"];
-    
-    [self setCurAppInfo:appInfo];
-    
-    //[cancelBtn setStringValue:[appInfo launch]];
-    
-    /*
-    [text setStringValue:@"安装成功"];
-    [cancelBtn setStringValue:@"打开"];
-     */
-    
-    // adb shell am start
-    
-    /*
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText: [NSString stringWithFormat:@"read from"]];
-    [alert setInformativeText:@"task finish"];
-    [alert runModal];
-     */
 }
-
-
-
-
 
 - (IBAction)cancel:(id)sender {
 
@@ -301,12 +273,50 @@
                                                  encoding: NSUTF8StringEncoding];
         NSLog (@"got\n%@", string);
         
+    } else if ([[cancelBtn title] isEqualToString:@"卸载后重装"]) {
+        [progress startAnimation:self];
+        [progress setHidden:NO];
+        [text setStringValue:@"安装中"];
+        
+        NSString *pac = [[self curAppInfo] package];
+        
+        NSBundle *mainBundle=[NSBundle mainBundle];
+        NSString *path=[mainBundle pathForResource:@"adb" ofType:nil];
+        
+        NSTask *task = [[NSTask alloc] init];
+        [task setLaunchPath:path];
+        
+        NSLog(@"pac: %@", pac);
+        
+        NSArray *arguments = [NSArray arrayWithObjects:@"uninstall", pac, nil];
+        [task setArguments: arguments];
+        
+        
+        NSPipe *pipe = [NSPipe pipe];
+        [task setStandardOutput: pipe];
+        NSFileHandle *file = [pipe fileHandleForReading];
+        
+        [task launch];
+        
+        NSData *data = [file readDataToEndOfFile];
+        NSString *string = [[NSString alloc] initWithData: data
+                                                 encoding: NSUTF8StringEncoding];
+        NSLog (@"got\n%@", string);
+        
+        [self performSelectorInBackground:@selector(startTask:) withObject:[[self fileURL] path]];
+        
+    } else if ([[cancelBtn title] isEqualToString:@"再次安装"]) {
+        [self performSelectorInBackground:@selector(startTask:) withObject:[[self fileURL] path]];
     } else {
         [text setStringValue:@"取消安装"];
         [progress startAnimation:self];
+        
+        if(instTask != nil) {
+            [instTask terminate];
+        }
+        
+        [self close];
     }
-   
-    
     
 }
 @end
