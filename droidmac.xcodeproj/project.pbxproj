@@ -18,6 +18,10 @@
 		B668607B15E75B7300F2C82B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B668605815E75B7300F2C82B /* Cocoa.framework */; };
 		B668608315E75B7300F2C82B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B668608115E75B7300F2C82B /* InfoPlist.strings */; };
 		B668608615E75B7300F2C82B /* droidmacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B668608515E75B7300F2C82B /* droidmacTests.m */; };
+		B668609015E75B9900F2C82B /* androidmac.icns in Resources */ = {isa = PBXBuildFile; fileRef = B668608F15E75B9900F2C82B /* androidmac.icns */; };
+		B668609715E7695600F2C82B /* aapt in Resources */ = {isa = PBXBuildFile; fileRef = B668609515E7695600F2C82B /* aapt */; };
+		B668609815E7695600F2C82B /* adb in Resources */ = {isa = PBXBuildFile; fileRef = B668609615E7695600F2C82B /* adb */; };
+		B66860A015E773A800F2C82B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B668609F15E773A800F2C82B /* AppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,11 @@
 		B668608215E75B7300F2C82B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B668608415E75B7300F2C82B /* droidmacTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = droidmacTests.h; sourceTree = "<group>"; };
 		B668608515E75B7300F2C82B /* droidmacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = droidmacTests.m; sourceTree = "<group>"; };
+		B668608F15E75B9900F2C82B /* androidmac.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = androidmac.icns; sourceTree = "<group>"; };
+		B668609515E7695600F2C82B /* aapt */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aapt; sourceTree = "<group>"; };
+		B668609615E7695600F2C82B /* adb */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = adb; sourceTree = "<group>"; };
+		B668609E15E773A800F2C82B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B668609F15E773A800F2C82B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +86,9 @@
 		B668604915E75B7300F2C82B = {
 			isa = PBXGroup;
 			children = (
+				B668609515E7695600F2C82B /* aapt */,
+				B668609615E7695600F2C82B /* adb */,
+				B668608F15E75B9900F2C82B /* androidmac.icns */,
 				B668605E15E75B7300F2C82B /* droidmac */,
 				B668607E15E75B7300F2C82B /* droidmacTests */,
 				B668605715E75B7300F2C82B /* Frameworks */,
@@ -116,6 +128,8 @@
 		B668605E15E75B7300F2C82B /* droidmac */ = {
 			isa = PBXGroup;
 			children = (
+				B668609E15E773A800F2C82B /* AppDelegate.h */,
+				B668609F15E773A800F2C82B /* AppDelegate.m */,
 				B668606A15E75B7300F2C82B /* Document.h */,
 				B668606B15E75B7300F2C82B /* Document.m */,
 				B668606D15E75B7300F2C82B /* Document.xib */,
@@ -231,6 +245,9 @@
 				B668606915E75B7300F2C82B /* Credits.rtf in Resources */,
 				B668606F15E75B7300F2C82B /* Document.xib in Resources */,
 				B668607215E75B7300F2C82B /* MainMenu.xib in Resources */,
+				B668609015E75B9900F2C82B /* androidmac.icns in Resources */,
+				B668609715E7695600F2C82B /* aapt in Resources */,
+				B668609815E7695600F2C82B /* adb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +284,7 @@
 			files = (
 				B668606515E75B7300F2C82B /* main.m in Sources */,
 				B668606C15E75B7300F2C82B /* Document.m in Sources */,
+				B66860A015E773A800F2C82B /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +472,7 @@
 				B668608B15E75B7300F2C82B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B668608C15E75B7300F2C82B /* Build configuration list for PBXNativeTarget "droidmacTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +481,7 @@
 				B668608E15E75B7300F2C82B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

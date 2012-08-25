@@ -8,6 +8,22 @@
 
 #import <Cocoa/Cocoa.h>
 
+
+@interface AppInfo : NSObject
+@property (strong) NSString *package;
+@property (strong) NSString *launch;
+@end
+
 @interface Document : NSDocument
+@property (weak) IBOutlet NSProgressIndicator *progress;
+@property (weak) IBOutlet NSTextField *text;
+@property (weak) IBOutlet NSImageView *icon;
+- (IBAction)cancel:(id)sender;
+@property (weak) IBOutlet NSTextField *appName;
+@property (weak) IBOutlet NSTextField *appVersion;
+@property (weak) IBOutlet NSButton *cancelBtn;
+
+@property (strong) AppInfo *curAppInfo;
 
 @end
+
