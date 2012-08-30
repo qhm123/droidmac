@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B63230C815EF9C3E00CE499C /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = B63230C715EF9C3E00CE499C /* Phone.m */; };
 		B668605915E75B7300F2C82B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B668605815E75B7300F2C82B /* Cocoa.framework */; };
 		B668606315E75B7300F2C82B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B668606115E75B7300F2C82B /* InfoPlist.strings */; };
 		B668606515E75B7300F2C82B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B668606415E75B7300F2C82B /* main.m */; };
@@ -22,6 +23,27 @@
 		B668609715E7695600F2C82B /* aapt in Resources */ = {isa = PBXBuildFile; fileRef = B668609515E7695600F2C82B /* aapt */; };
 		B668609815E7695600F2C82B /* adb in Resources */ = {isa = PBXBuildFile; fileRef = B668609615E7695600F2C82B /* adb */; };
 		B66860A015E773A800F2C82B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B668609F15E773A800F2C82B /* AppDelegate.m */; };
+		B6A683C615EF53A100FB82C2 /* droidmac.apk in Resources */ = {isa = PBXBuildFile; fileRef = B6A683C515EF53A100FB82C2 /* droidmac.apk */; };
+		B6A683E715EF70C400FB82C2 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683D515EF70C400FB82C2 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B6A683E815EF70C400FB82C2 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683D515EF70C400FB82C2 /* ASIDataCompressor.m */; };
+		B6A683E915EF70C400FB82C2 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683D715EF70C400FB82C2 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B6A683EA15EF70C400FB82C2 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683D715EF70C400FB82C2 /* ASIDataDecompressor.m */; };
+		B6A683EB15EF70C400FB82C2 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683D915EF70C400FB82C2 /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B6A683EC15EF70C400FB82C2 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683D915EF70C400FB82C2 /* ASIDownloadCache.m */; };
+		B6A683ED15EF70C400FB82C2 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683DB15EF70C400FB82C2 /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B6A683EE15EF70C400FB82C2 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683DB15EF70C400FB82C2 /* ASIFormDataRequest.m */; };
+		B6A683EF15EF70C400FB82C2 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683DD15EF70C400FB82C2 /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B6A683F015EF70C400FB82C2 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683DD15EF70C400FB82C2 /* ASIHTTPRequest.m */; };
+		B6A683F115EF70C400FB82C2 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683E115EF70C400FB82C2 /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B6A683F215EF70C400FB82C2 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683E115EF70C400FB82C2 /* ASIInputStream.m */; };
+		B6A683F315EF70C400FB82C2 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683E315EF70C400FB82C2 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B6A683F415EF70C400FB82C2 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A683E315EF70C400FB82C2 /* ASINetworkQueue.m */; };
+		B6A683FB15EF711500FB82C2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A683FA15EF711500FB82C2 /* SystemConfiguration.framework */; };
+		B6A683FD15EF713300FB82C2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A683FC15EF713300FB82C2 /* libz.dylib */; };
+		B6A683FF15EF714600FB82C2 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A683FE15EF714600FB82C2 /* CoreServices.framework */; };
+		B6A6840215EF753400FB82C2 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A6840115EF753400FB82C2 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B6A6840315EF753400FB82C2 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A6840115EF753400FB82C2 /* JSONKit.m */; };
+		B6AA5C6515EE598F003B9D75 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AA5C6415EE598F003B9D75 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B63230C615EF9C3E00CE499C /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phone.h; sourceTree = "<group>"; };
+		B63230C715EF9C3E00CE499C /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phone.m; sourceTree = "<group>"; };
 		B668605415E75B7300F2C82B /* droidmac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = droidmac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B668605815E75B7300F2C82B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B668605B15E75B7300F2C82B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -60,6 +84,31 @@
 		B668609615E7695600F2C82B /* adb */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = adb; sourceTree = "<group>"; };
 		B668609E15E773A800F2C82B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B668609F15E773A800F2C82B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B6A683C515EF53A100FB82C2 /* droidmac.apk */ = {isa = PBXFileReference; lastKnownFileType = file; path = droidmac.apk; sourceTree = "<group>"; };
+		B6A683D315EF70C400FB82C2 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		B6A683D415EF70C400FB82C2 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		B6A683D515EF70C400FB82C2 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		B6A683D615EF70C400FB82C2 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		B6A683D715EF70C400FB82C2 /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		B6A683D815EF70C400FB82C2 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		B6A683D915EF70C400FB82C2 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		B6A683DA15EF70C400FB82C2 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		B6A683DB15EF70C400FB82C2 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		B6A683DC15EF70C400FB82C2 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		B6A683DD15EF70C400FB82C2 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		B6A683DE15EF70C400FB82C2 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		B6A683DF15EF70C400FB82C2 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		B6A683E015EF70C400FB82C2 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		B6A683E115EF70C400FB82C2 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		B6A683E215EF70C400FB82C2 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		B6A683E315EF70C400FB82C2 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		B6A683E415EF70C400FB82C2 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		B6A683FA15EF711500FB82C2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B6A683FC15EF713300FB82C2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B6A683FE15EF714600FB82C2 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		B6A6840015EF753400FB82C2 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		B6A6840115EF753400FB82C2 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		B6AA5C6415EE598F003B9D75 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +116,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6A683FF15EF714600FB82C2 /* CoreServices.framework in Frameworks */,
+				B6A683FD15EF713300FB82C2 /* libz.dylib in Frameworks */,
+				B6A683FB15EF711500FB82C2 /* SystemConfiguration.framework in Frameworks */,
+				B6AA5C6515EE598F003B9D75 /* WebKit.framework in Frameworks */,
 				B668605915E75B7300F2C82B /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +139,9 @@
 		B668604915E75B7300F2C82B = {
 			isa = PBXGroup;
 			children = (
+				B6A6840415EF753A00FB82C2 /* JSONKit */,
+				B6A683D015EF708D00FB82C2 /* ASIHTTPRequest */,
+				B6A683C515EF53A100FB82C2 /* droidmac.apk */,
 				B668609515E7695600F2C82B /* aapt */,
 				B668609615E7695600F2C82B /* adb */,
 				B668608F15E75B9900F2C82B /* androidmac.icns */,
@@ -108,6 +164,10 @@
 		B668605715E75B7300F2C82B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6A683FE15EF714600FB82C2 /* CoreServices.framework */,
+				B6A683FC15EF713300FB82C2 /* libz.dylib */,
+				B6A683FA15EF711500FB82C2 /* SystemConfiguration.framework */,
+				B6AA5C6415EE598F003B9D75 /* WebKit.framework */,
 				B668605815E75B7300F2C82B /* Cocoa.framework */,
 				B668607915E75B7300F2C82B /* SenTestingKit.framework */,
 				B668605A15E75B7300F2C82B /* Other Frameworks */,
@@ -135,6 +195,8 @@
 				B668606D15E75B7300F2C82B /* Document.xib */,
 				B668607015E75B7300F2C82B /* MainMenu.xib */,
 				B668605F15E75B7300F2C82B /* Supporting Files */,
+				B63230C615EF9C3E00CE499C /* Phone.h */,
+				B63230C715EF9C3E00CE499C /* Phone.m */,
 			);
 			path = droidmac;
 			sourceTree = "<group>";
@@ -168,6 +230,40 @@
 				B668608115E75B7300F2C82B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B6A683D015EF708D00FB82C2 /* ASIHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				B6A683D315EF70C400FB82C2 /* ASICacheDelegate.h */,
+				B6A683D415EF70C400FB82C2 /* ASIDataCompressor.h */,
+				B6A683D515EF70C400FB82C2 /* ASIDataCompressor.m */,
+				B6A683D615EF70C400FB82C2 /* ASIDataDecompressor.h */,
+				B6A683D715EF70C400FB82C2 /* ASIDataDecompressor.m */,
+				B6A683D815EF70C400FB82C2 /* ASIDownloadCache.h */,
+				B6A683D915EF70C400FB82C2 /* ASIDownloadCache.m */,
+				B6A683DA15EF70C400FB82C2 /* ASIFormDataRequest.h */,
+				B6A683DB15EF70C400FB82C2 /* ASIFormDataRequest.m */,
+				B6A683DC15EF70C400FB82C2 /* ASIHTTPRequest.h */,
+				B6A683DD15EF70C400FB82C2 /* ASIHTTPRequest.m */,
+				B6A683DE15EF70C400FB82C2 /* ASIHTTPRequestConfig.h */,
+				B6A683DF15EF70C400FB82C2 /* ASIHTTPRequestDelegate.h */,
+				B6A683E015EF70C400FB82C2 /* ASIInputStream.h */,
+				B6A683E115EF70C400FB82C2 /* ASIInputStream.m */,
+				B6A683E215EF70C400FB82C2 /* ASINetworkQueue.h */,
+				B6A683E315EF70C400FB82C2 /* ASINetworkQueue.m */,
+				B6A683E415EF70C400FB82C2 /* ASIProgressDelegate.h */,
+			);
+			name = ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		B6A6840415EF753A00FB82C2 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				B6A6840015EF753400FB82C2 /* JSONKit.h */,
+				B6A6840115EF753400FB82C2 /* JSONKit.m */,
+			);
+			name = JSONKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +344,7 @@
 				B668609015E75B9900F2C82B /* androidmac.icns in Resources */,
 				B668609715E7695600F2C82B /* aapt in Resources */,
 				B668609815E7695600F2C82B /* adb in Resources */,
+				B6A683C615EF53A100FB82C2 /* droidmac.apk in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +382,15 @@
 				B668606515E75B7300F2C82B /* main.m in Sources */,
 				B668606C15E75B7300F2C82B /* Document.m in Sources */,
 				B66860A015E773A800F2C82B /* AppDelegate.m in Sources */,
+				B6A683E715EF70C400FB82C2 /* ASIDataCompressor.m in Sources */,
+				B6A683E915EF70C400FB82C2 /* ASIDataDecompressor.m in Sources */,
+				B6A683EB15EF70C400FB82C2 /* ASIDownloadCache.m in Sources */,
+				B6A683ED15EF70C400FB82C2 /* ASIFormDataRequest.m in Sources */,
+				B6A683EF15EF70C400FB82C2 /* ASIHTTPRequest.m in Sources */,
+				B6A683F115EF70C400FB82C2 /* ASIInputStream.m in Sources */,
+				B6A683F315EF70C400FB82C2 /* ASINetworkQueue.m in Sources */,
+				B6A6840215EF753400FB82C2 /* JSONKit.m in Sources */,
+				B63230C815EF9C3E00CE499C /* Phone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +399,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B668608615E75B7300F2C82B /* droidmacTests.m in Sources */,
+				B6A683E815EF70C400FB82C2 /* ASIDataCompressor.m in Sources */,
+				B6A683EA15EF70C400FB82C2 /* ASIDataDecompressor.m in Sources */,
+				B6A683EC15EF70C400FB82C2 /* ASIDownloadCache.m in Sources */,
+				B6A683EE15EF70C400FB82C2 /* ASIFormDataRequest.m in Sources */,
+				B6A683F015EF70C400FB82C2 /* ASIHTTPRequest.m in Sources */,
+				B6A683F215EF70C400FB82C2 /* ASIInputStream.m in Sources */,
+				B6A683F415EF70C400FB82C2 /* ASINetworkQueue.m in Sources */,
+				B6A6840315EF753400FB82C2 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,45 +64,60 @@
     return YES;
 }
 
-- (AppInfo *) getApkInfo:(NSString *)appPath {
+- (NSString*) execAdb:(NSArray *) arguments
+{
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSString *command = [mainBundle pathForResource:@"adb" ofType:nil];
     
-    NSBundle *mainBundle=[NSBundle mainBundle];
-    NSString *aaptPath=[mainBundle pathForResource:@"aapt" ofType:nil];
+    return [self execCommand:command arguments:arguments];
+}
+
+- (NSString*) execAapt:(NSArray *) arguments
+{
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSString *command = [mainBundle pathForResource:@"aapt" ofType:nil];
     
-    NSTask *task;
-    task = [[NSTask alloc] init];
-    [task setLaunchPath:aaptPath];
-    NSArray *arguments = [NSArray arrayWithObjects: @"dump", @"badging", appPath, nil];
+    return [self execCommand:command arguments:arguments];
+}
+
+- (NSString*) execCommand: (NSString *)command arguments: (NSArray *)arguments
+{
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath: command];
     [task setArguments: arguments];
     
-    NSPipe *pipe;
-    pipe = [NSPipe pipe];
+    NSPipe *pipe = [NSPipe pipe];
     [task setStandardOutput: pipe];
-    
-    NSFileHandle *file;
-    file = [pipe fileHandleForReading];
+    NSFileHandle *file = [pipe fileHandleForReading];
     
     [task launch];
     
-    NSData *data;
-    data = [file readDataToEndOfFile];
+    NSData *data = [file readDataToEndOfFile];
     
-    NSString *string;
-    string = [[NSString alloc] initWithData: data
-                                   encoding: NSUTF8StringEncoding];
+    NSString *string = [[NSString alloc] initWithData: data
+                                             encoding: NSUTF8StringEncoding];
+    
+    NSLog(@"string: %@", string);
+    
+    return string;
+}
+
+- (AppInfo *) getApkInfo:(NSString *)appPath {
+    NSArray *arguments = [NSArray arrayWithObjects: @"dump", @"badging", appPath, nil];
+    NSString *result = [self execAapt:arguments];
     
     NSRegularExpression *appLabelRegx = [NSRegularExpression regularExpressionWithPattern:@"package: name='(.*?)'.*versionName='(.*?)'.*application-label:'(.*?)'.*application-icon.*:'(.*?)'.*launchable-activity: name='(.*?)'" options:NSRegularExpressionDotMatchesLineSeparators error:nil];
-    NSTextCheckingResult *match = [appLabelRegx firstMatchInString:string options:0 range:NSMakeRange(0, [string length])];
+    NSTextCheckingResult *match = [appLabelRegx firstMatchInString:result options:0 range:NSMakeRange(0, [result length])];
     if(match != nil) {
-        NSString *package = [string substringWithRange:[match  rangeAtIndex:1]];
-        NSString *version = [string substringWithRange:[match  rangeAtIndex:2]];
-        NSString *appLabel = [string substringWithRange:[match rangeAtIndex:3]];
-        NSString *iconPath = [string substringWithRange:[match rangeAtIndex:4]];
-        NSString *launch = [string substringWithRange:[match rangeAtIndex:5]];
+        NSString *package = [result substringWithRange:[match  rangeAtIndex:1]];
+        NSString *version = [result substringWithRange:[match  rangeAtIndex:2]];
+        NSString *appLabel = [result substringWithRange:[match rangeAtIndex:3]];
+        NSString *iconPath = [result substringWithRange:[match rangeAtIndex:4]];
+        NSString *launch = [result substringWithRange:[match rangeAtIndex:5]];
+        
         NSLog(@"package: %@, version: %@, applabel: %@, icon: %@, launch: %@. appPath: %@", package, version, appLabel, iconPath, launch, appPath);
         
         [self setAppIcon:appPath icon:iconPath];
-        
         [appName setStringValue:appLabel];
         [appVersion setStringValue:version];
         
@@ -116,33 +131,11 @@
     }
     
     return nil;
-    
 }
 
 - (void) setAppIcon:(NSString *)appPath icon:(NSString *)iconPath {
-    NSTask *task;
-    task = [[NSTask alloc] init];
-    [task setLaunchPath:@"/usr/bin/unzip"];
     NSArray *arguments = [NSArray arrayWithObjects: @"-o",appPath, iconPath, @"-d", @"/tmp", nil];
-    [task setArguments: arguments];
-    
-    NSPipe *pipe;
-    pipe = [NSPipe pipe];
-    [task setStandardOutput: pipe];
-    
-    NSFileHandle *file;
-    file = [pipe fileHandleForReading];
-    
-    [task launch];
-    
-    NSData *data;
-    data = [file readDataToEndOfFile];
-    
-    NSString *string;
-    string = [[NSString alloc] initWithData: data
-                                   encoding: NSUTF8StringEncoding];
-    
-    //NSLog(@"aapt: %@", string);
+    [self execCommand:@"/usr/bin/unzip" arguments:arguments];
     
     NSString *tmpIconPath = [[NSString alloc] initWithFormat:@"/tmp/%@", iconPath];
     
@@ -150,35 +143,14 @@
 }
 
 - (void) startTask:(NSString *)apppath {
-    
-    NSBundle *mainBundle = [NSBundle mainBundle];
-    NSString *path = [mainBundle pathForResource:@"adb" ofType:nil];
+    NSArray *arguments = [NSArray arrayWithObjects: @"install", apppath, nil];
+    NSString *string = [self execAdb:arguments];
     
     AppInfo *appInfo = [self getApkInfo:apppath];
-    
-    NSTask *task = [[NSTask alloc] init];
-    [task setLaunchPath:path];
-    NSArray *arguments = [NSArray arrayWithObjects: @"install", apppath, nil];
-    [task setArguments: arguments];
-    
-    NSPipe *pipe = [NSPipe pipe];
-    [task setStandardOutput: pipe];
-    //[task setStandardError: pipe];
-    NSFileHandle *file = [pipe fileHandleForReading];
-    
-    instTask = task;
-
-    [task launch];
-    
-    NSData *data = [file readDataToEndOfFile];
-    NSString *string = [[NSString alloc] initWithData: data
-                                   encoding: NSUTF8StringEncoding];
-    NSLog (@"got\n%@", string);
     
     if([string rangeOfString:@"Failure"].location != NSNotFound) {
         if([string rangeOfString:@"INSTALL_FAILED_ALREADY_EXISTS"].location != NSNotFound) {
             [self taskDidTerminate:appInfo success:@"INSTALL_FAILED_ALREADY_EXISTS"];
-
             [text setStringValue:@"安装失败，应用已经存在"];
         }
     } else if([string rangeOfString:@"error: device not found"].location != NSNotFound) {
@@ -250,28 +222,10 @@
         NSString *pac = [[self curAppInfo] package];
         NSLog(@"clicked cancel, %@, %@", [[self curAppInfo] launch], pac);
         
-        NSBundle *mainBundle=[NSBundle mainBundle];
-        NSString *path=[mainBundle pathForResource:@"adb" ofType:nil];
-        
-        NSTask *task = [[NSTask alloc] init];
-        [task setLaunchPath:path];
-        
         NSString *cmp = [[NSString alloc] initWithFormat:@"%@/%@",pac, lau];
         NSLog(@"cmp: %@", cmp);
         NSArray *arguments = [NSArray arrayWithObjects:@"shell", @"am", @"start", @"-n", cmp, nil];
-        [task setArguments: arguments];
-        
-        
-        NSPipe *pipe = [NSPipe pipe];
-        [task setStandardOutput: pipe];
-        NSFileHandle *file = [pipe fileHandleForReading];
-        
-        [task launch];
-        
-        NSData *data = [file readDataToEndOfFile];
-        NSString *string = [[NSString alloc] initWithData: data
-                                                 encoding: NSUTF8StringEncoding];
-        NSLog (@"got\n%@", string);
+        [self execAdb:arguments];
         
     } else if ([[cancelBtn title] isEqualToString:@"卸载后重装"]) {
         [progress startAnimation:self];
@@ -279,29 +233,10 @@
         [text setStringValue:@"安装中"];
         
         NSString *pac = [[self curAppInfo] package];
-        
-        NSBundle *mainBundle=[NSBundle mainBundle];
-        NSString *path=[mainBundle pathForResource:@"adb" ofType:nil];
-        
-        NSTask *task = [[NSTask alloc] init];
-        [task setLaunchPath:path];
-        
         NSLog(@"pac: %@", pac);
         
         NSArray *arguments = [NSArray arrayWithObjects:@"uninstall", pac, nil];
-        [task setArguments: arguments];
-        
-        
-        NSPipe *pipe = [NSPipe pipe];
-        [task setStandardOutput: pipe];
-        NSFileHandle *file = [pipe fileHandleForReading];
-        
-        [task launch];
-        
-        NSData *data = [file readDataToEndOfFile];
-        NSString *string = [[NSString alloc] initWithData: data
-                                                 encoding: NSUTF8StringEncoding];
-        NSLog (@"got\n%@", string);
+        [self execAdb:arguments];
         
         [self performSelectorInBackground:@selector(startTask:) withObject:[[self fileURL] path]];
         
