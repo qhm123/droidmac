@@ -10,32 +10,71 @@
 #import "ASIHTTPRequest.h"
 #import "JSONKit.h"
 #import "Phone.h"
+#import "NaviDataSource.h"
+#import "NaviDelegate.h"
 
 @implementation AppDelegate
+@synthesize rightContentView;
+@synthesize appView;
+@synthesize outline;
+@synthesize tabControl;
+@synthesize go;
 @synthesize window;
 @synthesize urlText;
 @synthesize webView;
-@synthesize go;
+@synthesize refresh;
+@synthesize history;
+@synthesize deviceModel;
+@synthesize deviceVersion;
+@synthesize testView;
+@synthesize phoneView;
 
 int bytesReceived;
 NSURLResponse *downloadResponse;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [rightContentView addSubview:phoneView];
+    
     [webView setDownloadDelegate:self];
     [webView setPolicyDelegate:self];
     [webView setUIDelegate:self];
     
-    BOOL result = [self startDroid];
-    if(!result) {
-        NSBundle *mainBundle = [NSBundle mainBundle];
-        NSString *path = [mainBundle pathForResource:@"droidmac.apk" ofType:nil];
+    NSInteger count = [self getConnectDeviceCount];
+    if(count != 1) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"没有连接设备"];
+        [alert setInformativeText:@""];
+        [alert runModal];
+    } else {
+        BOOL result = [self startDroid];
+        if(!result) {
+            NSBundle *mainBundle = [NSBundle mainBundle];
+            NSString *path = [mainBundle pathForResource:@"droidmac.apk" ofType:nil];
+            
+            NSArray *arguments = [NSArray arrayWithObjects: @"install", path, nil];
+            [self execAdb:arguments];
+        } else {
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:@"手机上已安装守护程序，或者安装守护程序失败"];
+            [alert setInformativeText:@""];
+            [alert runModal];
+        }
         
-        NSArray *arguments = [NSArray arrayWithObjects: @"install", path, nil];
-        [self execAdb:arguments];
+        [self adbForward];
+        
+        [self updateDeviceInfo];
     }
+}
+
+- (NSInteger) getConnectDeviceCount {
+    NSArray *arguments = [NSArray arrayWithObjects: @"devices", nil];
+    NSString *result = [self execAdb:arguments];
+
+    NSArray *array = [result componentsSeparatedByString:@"\n"];
+    NSLog(@"device %@, size: %ld", result, [array count]);
     
-    [self adbForward];
+    return [array count] - 3;
 }
 
 - (NSString*) execAdb:(NSArray *)arguments
@@ -85,7 +124,15 @@ NSURLResponse *downloadResponse;
     [[webView mainFrame] loadRequest:requestObj];
 }
 
-- (IBAction)testBtn:(id)sender {
+- (IBAction)historyClick:(id)sender {
+
+}
+
+- (IBAction)refreshClick:(id)sender {
+    [[webView mainFrame] reload];
+}
+
+- (void)updateDeviceInfo {
     NSURL *url = [NSURL URLWithString:@"http://localhost:8080/phone"];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request startSynchronous];
@@ -99,7 +146,9 @@ NSURLResponse *downloadResponse;
         
         Phone *phone = [Phone fromJson:response];
         NSLog(@"%@, %@", [phone device], [phone model]);
-        //[Phone fromJSON];
+        [deviceModel setStringValue:[phone model]];
+        NSString *version = [[NSString alloc] initWithFormat:@"Android SDK %@", [phone sdk]];
+        [deviceVersion setStringValue: version];
     }
 }
 
@@ -121,6 +170,9 @@ decisionListener:(id < WebPolicyDecisionListener >)listener
             // inform the user that the download failed.
         }
          */
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"点击开始下载"];
+        [alert runModal];
         
         [listener download];
     }
@@ -192,12 +244,70 @@ decisionListener:(id < WebPolicyDecisionListener >)listener
 {
     // Do something with the data.
     NSLog(@"%@",@"downloadDidFinish");
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"下载完毕, 还不能自动安装 :-("];
+    [alert runModal];
 }
 
 - (WebView *)webView:(WebView *)sender createWebViewWithRequest:(NSURLRequest *)request
 {
     [[webView mainFrame] loadRequest:request];
     return webView;
+}
+
+
+- (IBAction)tabSwitch:(id)sender {
+    NSInteger selected = [tabControl selectedSegment];
+    NSLog(@"selected: %ld", selected);
+}
+
+#pragma outline delegate
+
+- (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+    NSLog(@"outlineView: %@", item);
+    
+    /*
+    NSTextField *textField = [[NSTextField alloc] init];
+    [textField setStringValue:item];
+    return textField;
+     */
+
+    NSTextField *result = [outlineView makeViewWithIdentifier:@"MainCell" owner:self];
+    [result setStringValue:item];
+    return result;
+}
+
+-(void)outlineViewSelectionDidChange:(NSNotification *)notification
+{
+    NSLog(@"selection changed");
+    if ([outline selectedRow] != -1) {
+        NSString *item = [outline itemAtRow:[outline selectedRow]];
+            [self _setContentViewToName:item];
+    }
+}
+
+
+- (void)_setContentViewToName:(NSString *)name {
+    NSView *curView = [[rightContentView subviews] objectAtIndex:0];
+    NSArray *items = [[NSArray alloc] initWithObjects:@"设备", @"应用", @"联系人", @"短信", @"媒体", nil];
+    NSView *newView;
+    NSLog(@"index: %ld", [items indexOfObject:name]);
+    switch ([items indexOfObject:name]) {
+        case 0:
+            newView = phoneView;
+            break;
+        case 1: {
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:@"下载文件时，软件会自动检测是否是apk文件，如果是则立即安装到Android设备上"];
+            [alert runModal];
+            newView = appView;
+        }
+            break;
+        default:
+            newView = testView;
+            break;
+    }
+    [rightContentView replaceSubview:curView with:newView];
 }
 
 

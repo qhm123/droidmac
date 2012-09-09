@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B607B49115FAD7D900BEE551 /* NaviDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B607B49015FAD7D900BEE551 /* NaviDataSource.m */; };
+		B607B49915FADF6F00BEE551 /* NaviDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B607B49815FADF6F00BEE551 /* NaviDelegate.m */; };
+		B607B4B615FB7DEB00BEE551 /* phone_large_default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B607B4B515FB7DEB00BEE551 /* phone_large_default.jpg */; };
 		B63230C815EF9C3E00CE499C /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = B63230C715EF9C3E00CE499C /* Phone.m */; };
 		B668605915E75B7300F2C82B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B668605815E75B7300F2C82B /* Cocoa.framework */; };
 		B668606315E75B7300F2C82B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B668606115E75B7300F2C82B /* InfoPlist.strings */; };
@@ -57,6 +60,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B607B48F15FAD7D900BEE551 /* NaviDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaviDataSource.h; sourceTree = "<group>"; };
+		B607B49015FAD7D900BEE551 /* NaviDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NaviDataSource.m; sourceTree = "<group>"; };
+		B607B49715FADF6F00BEE551 /* NaviDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NaviDelegate.h; path = ../NaviDelegate.h; sourceTree = "<group>"; };
+		B607B49815FADF6F00BEE551 /* NaviDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NaviDelegate.m; path = ../NaviDelegate.m; sourceTree = "<group>"; };
+		B607B4B515FB7DEB00BEE551 /* phone_large_default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = phone_large_default.jpg; sourceTree = "<group>"; };
 		B63230C615EF9C3E00CE499C /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phone.h; sourceTree = "<group>"; };
 		B63230C715EF9C3E00CE499C /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phone.m; sourceTree = "<group>"; };
 		B668605415E75B7300F2C82B /* droidmac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = droidmac.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +147,7 @@
 		B668604915E75B7300F2C82B = {
 			isa = PBXGroup;
 			children = (
+				B607B4B515FB7DEB00BEE551 /* phone_large_default.jpg */,
 				B6A6840415EF753A00FB82C2 /* JSONKit */,
 				B6A683D015EF708D00FB82C2 /* ASIHTTPRequest */,
 				B6A683C515EF53A100FB82C2 /* droidmac.apk */,
@@ -188,6 +197,8 @@
 		B668605E15E75B7300F2C82B /* droidmac */ = {
 			isa = PBXGroup;
 			children = (
+				B607B49715FADF6F00BEE551 /* NaviDelegate.h */,
+				B607B49815FADF6F00BEE551 /* NaviDelegate.m */,
 				B668609E15E773A800F2C82B /* AppDelegate.h */,
 				B668609F15E773A800F2C82B /* AppDelegate.m */,
 				B668606A15E75B7300F2C82B /* Document.h */,
@@ -197,6 +208,8 @@
 				B668605F15E75B7300F2C82B /* Supporting Files */,
 				B63230C615EF9C3E00CE499C /* Phone.h */,
 				B63230C715EF9C3E00CE499C /* Phone.m */,
+				B607B48F15FAD7D900BEE551 /* NaviDataSource.h */,
+				B607B49015FAD7D900BEE551 /* NaviDataSource.m */,
 			);
 			path = droidmac;
 			sourceTree = "<group>";
@@ -345,6 +358,7 @@
 				B668609715E7695600F2C82B /* aapt in Resources */,
 				B668609815E7695600F2C82B /* adb in Resources */,
 				B6A683C615EF53A100FB82C2 /* droidmac.apk in Resources */,
+				B607B4B615FB7DEB00BEE551 /* phone_large_default.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +405,8 @@
 				B6A683F315EF70C400FB82C2 /* ASINetworkQueue.m in Sources */,
 				B6A6840215EF753400FB82C2 /* JSONKit.m in Sources */,
 				B63230C815EF9C3E00CE499C /* Phone.m in Sources */,
+				B607B49115FAD7D900BEE551 /* NaviDataSource.m in Sources */,
+				B607B49915FADF6F00BEE551 /* NaviDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
